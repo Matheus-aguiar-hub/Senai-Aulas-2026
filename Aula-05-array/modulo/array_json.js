@@ -272,21 +272,69 @@ const cadastroDeProdutos = function(){
 
     ]
 
-    console.table(produtos)
+    // console.log(`----------------------------\n`)
 
-    let exibirProdutos = [
-        produtos.forEach(function(itemProduto){
-      
-            console.log('A cor do produto é:' + itemProduto[0].cor)
-            console.log('A marca do produto é:' + itemProduto[0].marca)
-        })  
-    ]
+    // console.table(produtos)
 
-    // console.log(produtos[0].cor)
-    // console.log(produtos[0].cor[1].cor)
+    // // Percorre o objeto de produto, para trazer os dados de cada produto
+    // produtos.forEach(function(itemProduto){
+    //     console.log(`----------------------------\n`)
+    //     console.log(`Produto:  ${itemProduto.nome}`)
+    //     console.log('')
+
+    //     //Percorre o objeto de marca dentro de cada produto, para trazer as marcas 
+    //     itemProduto.marca.forEach(function(itemMarca){
+    //         console.log(`Marca:  ${itemMarca}`)
+    //     })
+    //     console.log('')
+
+    //     //Percorre o objeto de cor dentro de                                                                                                                                                                                                                       cada produto, para trazer as cores
+    //     itemProduto.cor.forEach(function(itemCor){
+            
+    //         console.log(`Cor:  ${itemCor.cor}`)
+    //     })
+    //     console.log('')
+    //     console.log(`----------------------------\n`)
+    // })
+
+    // //Pesquisando produto pelo nome 
+    // console.log('Pesquisando produtos pelo nome')
+    // let nome = "Mouse"
+
+    // produtos.forEach(function(itemProduto){
+    //     if( String(itemProduto.nome).toUpperCase() == String(nome).toUpperCase() ){
+    //         console.log(itemProduto)
+    //     }
+    // })
+
+    //Pesquisando um produto pela cor
+    console.log('Pesquisando produtos pela cor...')
+
+    let cor = 'Laranja'
+    let status = false
+
+    produtos.forEach(function(itemProduto){
+        itemProduto.cor.forEach(function(itemCor){
+            if(String(itemCor.cor).toUpperCase() == String(cor).toUpperCase()){
+                console.log(itemProduto)
+                status = true
+            }
+        })
+    })
+
+    if(!status){
+        console.log('item não foi encontrado.')
+    }
+
+    }
+
+    cadastroDeProdutos()
+
+// console.log(produtos[0].cor)
+// console.log(produtos[0].cor[1].cor)
 
 
-    //Percorre o array e mostra todos os dados que estão dentro dela
+//Percorre o array e mostra todos os dados que estão dentro dela
 //     produtos[0].cor.forEach(function(nomeCor){
 //         console.log('A cor do produto é:' + nomeCor.cor)
 //     })  
@@ -305,6 +353,3 @@ const cadastroDeProdutos = function(){
 // criandoDadosJSON()
 
 
-}
-
-cadastroDeProdutos()
