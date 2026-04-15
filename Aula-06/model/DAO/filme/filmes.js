@@ -1,0 +1,72 @@
+/********************************************************************************
+ * Objetivo: Arquivo responsável pelo CRUD no Banco de daods MySQL na tabela
+ *           Filme
+ * Data 15/04/2026
+ * Autor: Matheus Aguiar
+ * Versão: 1.0
+ ********************************************************************************/
+
+//import da biblioteca para gerenciar o banco de dados Mysql no node.JS
+const knex = require('knex')
+
+//Import do arquivo de configuração para conexão com o BD Mysql
+const knexConfig = require('../../database_config_knex/knex_file.js')
+
+//Criar a conexão com o BD Mysql
+const knexconex = knex(knexConfig.development)
+
+//Função para inserir dados na tabela de filmes
+const insertFilme = async function(filmes){
+    let sql = `insert into tbl_filmes (
+						nome, 
+                        data_lancamento, 
+                        duracao, 
+                        sinopse, 
+                        avaliacao, 
+                        valor, 
+                        capa
+                        )
+				values(
+						'${filmes.nome}',
+						'${filmes.data_lancamento}',
+						'${filmes.duracao}',
+                        '${filmes.sinopse}',
+                        '${filmes.avaliacao}',
+                        '${filmes.valor}',
+                        '${filmes.capa}'
+                        );`
+
+    //Executar o scriptSQL no banco de dados
+    let result = await knexConex.raw(sql)
+
+    if(result) return true
+    else return false
+}
+
+//Função para atualizar um filme existente na tabela
+const updateFilme = async function(filmes){
+
+}
+
+//Função para retornar todos os dados da tabela de filme
+const selectAllFilme = async function(){
+
+}
+
+//Função para retornar os dados do filme filtrando pelo id
+const selectByIdFilme = async function(id){
+
+}
+
+//Função para excluir um filme pelo ID
+const deleteFilme = async function(id){
+
+}
+
+module.exports = {
+    insertFilme,
+    updateFilme,
+    selectAllFilme,
+    selectByIdFilme,
+    deleteFilme
+}
