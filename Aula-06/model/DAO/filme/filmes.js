@@ -13,10 +13,11 @@ const knex = require('knex')
 const knexConfig = require('../../database_config_knex/knex_file.js')
 
 //Criar a conexão com o BD Mysql
-const knexconex = knex(knexConfig.development)
+const knexConex = knex(knexConfig.development)
 
 //Função para inserir dados na tabela de filmes
 const insertFilme = async function(filmes){
+    try {
     let sql = `insert into tbl_filmes (
 						nome, 
                         data_lancamento, 
@@ -31,16 +32,23 @@ const insertFilme = async function(filmes){
 						'${filmes.data_lancamento}',
 						'${filmes.duracao}',
                         '${filmes.sinopse}',
-                        '${filmes.avaliacao}',
+                        if('${filmes.avaliacao}' = '', null, '${filmes.avaliacao}'),
                         '${filmes.valor}',
                         '${filmes.capa}'
                         );`
+
+                       
 
     //Executar o scriptSQL no banco de dados
     let result = await knexConex.raw(sql)
 
     if(result) return true
     else return false
+    
+    }catch(error){
+        // console.log(error)
+        return false
+    }
 }
 
 //Função para atualizar um filme existente na tabela

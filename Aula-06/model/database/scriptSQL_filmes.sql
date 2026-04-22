@@ -40,4 +40,8 @@ insert into tbl_filmes (
                         'https://br.web.img3.acsta.net/c_310_420/img/5b/ea/5bea1aeac3323aeaaf82449a34fafbbf.jpg'
                         );
                         
-select * from tbl_filmes
+select * from tbl_filmes;
+
+TRUNCATE TABLE tbl_filmes;
+
+desc tbl_filmes
