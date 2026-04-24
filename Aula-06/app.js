@@ -32,6 +32,13 @@ app.post('/v1/senai/locadora/filme', bodyParserJSON, async function(request, res
     response.json(result)
 })
 
+app.get('/v1/senai/locadora/filme', async function(request, response){
+    let result = await controllerFilme.listarFilme()
+
+    response.status(result.status_code)
+    response.json(result)
+})
+
 //Seve para inicializar a API para receber requisições
 const PORT = process.env.PORT || 8080;
 
